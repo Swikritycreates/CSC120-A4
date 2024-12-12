@@ -47,7 +47,7 @@ public class Car {
          */
         public boolean addPassenger(Passenger name){
             //how to append list to add passenger
-            if (seatsRemaining()> 0){
+            if (seatsRemaining()> 0 && !passengersOnBoard.contains(name)){
                 passengersOnBoard.add(name);
                 System.out.println(name + " has boarded the car.");
                 return true;

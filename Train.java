@@ -4,8 +4,6 @@ public class Train {
     private Engine engine;
     private int passengerCapacity;
     private ArrayList<Car> cars;
-    private FuelType fuelType;
-    private double fuelCapacity;
     int nCars;
 
     /**
@@ -17,10 +15,8 @@ public class Train {
      * @param passengerCapacity max number of passengers that can board the train 
      */
 
-    public Train(FuelType fuelType, Engine engine, double fuelCapacity, int nCars, int passengerCapacity){
-       this.fuelType = fuelType;
+    public Train(Engine engine, int nCars, int passengerCapacity){
        this.engine = engine;
-       this.fuelCapacity = fuelCapacity;
        this.passengerCapacity = passengerCapacity;
        this.nCars = nCars;
        this.cars = new ArrayList<>(nCars);
@@ -32,23 +28,6 @@ public class Train {
         }
     }
 
-    /**
-     * accesess fuelCapacity
-     * @return it since it is private
-     */
-
-    public double getfuelCapacity() {
-        return fuelCapacity;
-    }
-
-    /**
-     * accessor
-     * @return fuelType
-     */
-    public FuelType getFuelType() {
-            return fuelType;
-        }
-    
     /**
      * accessor
      * @return engine
@@ -93,10 +72,11 @@ public class Train {
      */
 
     public int  getMaxCapacity(Car car) {
+        int totalCapacity = 0;
         for (int i= 0; i < nCars; i++) {
            passengerCapacity += car.getCapacity();
         }
-        return passengerCapacity;
+        return totalCapacity;
     }
 
     /**
@@ -123,7 +103,7 @@ public class Train {
     }
 public static void main(String[] args){
     Engine myEngine = new Engine(FuelType.ELECTRIC, 100.0);
-    Train mytrain = new Train(FuelType.ELECTRIC, myEngine, 100, 5, 50);
+    Train mytrain = new Train(myEngine, 5, 50);
     Passenger myPassenger = new Passenger("Ramesh");
     mytrain.getCar(1).addPassenger(myPassenger);
     mytrain.printManifest();

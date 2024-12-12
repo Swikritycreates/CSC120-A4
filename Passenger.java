@@ -26,7 +26,12 @@ public class Passenger {
      * nothing else worked except "this", so i left it just 
      */
     public void boardCar(Car c) {
-        c.addPassenger(this);
+        try {
+            c.addPassenger(this);
+        } catch (Exception e) {
+            System.out.println("Passenger is already on Board or the car is full.");
+        }
+       
     }
 
     /**
@@ -34,6 +39,11 @@ public class Passenger {
      * @param c
      */
     public void getOffCar(Car c) {
-        c.removePassenger(this);
+        try {
+            c.removePassenger(this);
+        } catch (Exception e) {
+            System.out.println("Couldnot remove passenger. Looks like he is not in the car.");
+        }
+        
     }
 }
